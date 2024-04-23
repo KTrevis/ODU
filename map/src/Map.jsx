@@ -13,7 +13,7 @@ const dataLayer = {
 			  [1, '#000080'],
 			]
 		  },
-		  'fill-opacity': 0.8
+		  'fill-opacity': 0.5
 		}
 }
 
@@ -21,10 +21,11 @@ export default function MyMap() {
 	const [allData, setAllData] = useState(null);
 	const [hoverInfo, setHoverInfo] = useState(null);
 
+	console.log(allData)
 	const onHover = useCallback(event => {
 		const {
-		  features,
-		  point: {x, y}
+			features,
+			point: {x, y}
 		} = event;
 		const hoveredFeature = features && features[0];
 		setHoverInfo(hoveredFeature && {feature: hoveredFeature, x, y});
@@ -57,7 +58,7 @@ export default function MyMap() {
 				{hoverInfo ? 
 				<ControlPanel 
 					bureau={hoverInfo.feature.properties.id_bv}/>
-					: <ControlPanel/>}
+				: <ControlPanel/>}
 			</Map>
 		</>
   );
